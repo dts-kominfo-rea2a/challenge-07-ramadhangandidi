@@ -3,11 +3,13 @@ const { promiseTheaterIXX, promiseTheaterVGC } = require("./external.js");
 // TODO: Buat fungsi promiseOutput sesuai ketentuan readme
 const promiseOutput = async (emosi) => {
   try {
-    const ixx = await promiseTheaterIXX();
-    const vgc = await promiseTheaterVGC();
+    let ixx = await promiseTheaterIXX();
+    let vgc = await promiseTheaterVGC();
 
-    let arrHasil = ixx.concat(vgc);
-    return arrHasil.filter((obj) => obj.hasil === emosi.length);
+    let dataArr = ixx.concat(vgc);
+    return dataArr.filter((obj) => obj.hasil === emosi).length;
+
+    // return emotionArr.filter((data) => data.hasil === emosi).lenght;
   } catch (error) {
     console.log(error);
   }
